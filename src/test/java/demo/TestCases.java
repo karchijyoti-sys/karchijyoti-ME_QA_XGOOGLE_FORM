@@ -33,10 +33,10 @@ public class TestCases {
 
         System.out.println("Filling basic details...");
        // Step 2: Fill in the basic details
-        obj.entertext(driver.findElement(By.xpath("(//input[@type='text'])[1]")), "Crio Learner");
+        obj.entertext(By.xpath("//div[@jsname='YPqjbf']//input[@class='whsOnd zHQkBf']"), "Crio Learner");
         long epoch = System.currentTimeMillis()/1000;
-        obj.entertext(driver.findElement(By.xpath("//span[text()='Why are you practicing Automation?']/parent::div/parent::div/parent::div/parent::div//textarea")), "I want to be the best QA Engineer! "+Long.toString(epoch));
-        obj.selectradio(driver.findElement(By.xpath("//div[@data-value='6 - 10']")));
+        obj.entertext(By.xpath("//span[text()='Why are you practicing Automation?']/parent::div/parent::div/parent::div/parent::div//textarea"), "I want to be the best QA Engineer! "+String.valueOf(epoch));
+        obj.selectradio(By.xpath("//label[contains(@class,'ajBQVb')]//span"),"6 - 10");
        // Selecting multiple checkboxes
         obj.selectcheckbox("Java");
         obj.selectcheckbox("Selenium");
@@ -44,9 +44,9 @@ public class TestCases {
         // Step 3: Handle dropdown selection
         obj.dropdownbytext(driver.findElement(By.xpath("//span[text()='Choose']")), "Mrs");
         // Step 4: Enter date and time
-        obj.entertext(driver.findElement(By.xpath("//input[@type='date']")), obj.getCurrentDateTime("dd-MM-yyyy").toString()); 
-        obj.entertext(driver.findElement(By.xpath("//div[text()='Time']/parent::div/parent::div/parent::div//input[1]")), "07");
-        obj.entertext(driver.findElement(By.xpath("(//div[text()='Time']/parent::div/parent::div/parent::div//input)[2]")), "30");
+        obj.entertext(By.xpath("//input[@type='date']"), String.valueOf(obj.getCurrentDateTime("MM-dd-yyyy"))); 
+        obj.entertext(By.xpath("//input[@aria-label='Hour']"), "07");
+        obj.entertext(By.xpath("//input[@aria-label='Minute']"), "30");
         // Step 5: Submit the form and validate submission
         obj.clickElement(driver.findElement(By.xpath("//span[text()='Submit']")));
         String ActualText="Thanks for your response, Automation Wizard!";
